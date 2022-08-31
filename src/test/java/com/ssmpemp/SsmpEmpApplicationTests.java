@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SsmpEmpApplicationTests {
 	@Autowired
 	private EmpService es;
+	public void test(){
+
+	}
 	@Test
 	void contextLoads() {
 		System.out.println(es.getAll());
