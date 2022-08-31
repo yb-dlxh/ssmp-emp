@@ -5,4 +5,6 @@ public class MyHotConfig {
     public void hot(){}
     
     public void github(){}
+
+    public void test843016(){}
 }
