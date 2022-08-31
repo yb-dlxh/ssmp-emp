@@ -7,4 +7,5 @@ public class MyHotConfig {
     public void github(){}
 
     public void test843016(){}
+    public void ttt(){}
 }
