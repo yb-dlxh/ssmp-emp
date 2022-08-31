@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${error}">
+  <h1 th:case="1">增加失败</h1>
+  <h1 th:case="2">删除失败</h1>
+  <h1 th:case="3">修改失败</h1>
+</div>
+</body>
+</html>

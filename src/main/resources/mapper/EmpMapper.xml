@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssmpemp.mapper.EmpMapper" >
+    <resultMap id="empMap" type="emp" autoMapping="true">
+        <id column="empno" property="empno"></id>
+        <association property="dept" javaType="dept" autoMapping="true">
+            <id column="deptno" property="deptno"></id>
+        </association>
+    </resultMap>
+<!--    public List<Emp> getAllEmps();-->
+    <select id="getAllEmps" resultMap="empMap">
+        select e.* , d.dname, d.loc from emp e left join dept d
+        on e.deptno = d.deptno
+    </select>
+
+<!--    public List<Emp> getAllEmpsByPage(@Param("index") int startIndex, @Param("count") int count);-->
+    <select id="getAllEmpsByPage" resultMap="empMap">
+        select e.* , d.dname, d.loc from emp e left join dept d
+        on e.deptno = d.deptno
+        limit #{index}, #{count}
+    </select>
+</mapper>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+</head>
+<body>
+  <a href="/savepage">添加员工</a>
+  <table width="800" border="1">
+    <tr>
+      <th>编号</th>
+      <th>姓名</th>
+      <th>入职时间</th>
+      <th>工资</th>
+      <th>奖金</th>
+      <th>部门名称</th>
+      <th>操作</th>
+    </tr>
+    <tr th:each="emp:${list}">
+      <td>[[${emp.empno}]]</td>
+      <td>[[${emp.ename}]]</td>
+      <td>[[${emp.hiredate}]]</td>
+      <td>[[${emp.sal}]]</td>
+      <td>[[${emp.comm == null ? '无': emp.comm}]]</td>
+      <td>[[${emp.dept != null ? emp.dept.dname : '' }]]</td>
+      <td>
+        <a th:href="|/updatepage/${emp.empno}|">修改</a>
+        <a th:href="'/empdel?empno='+${emp.empno}">删除</a>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

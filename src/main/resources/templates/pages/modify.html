@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工[[${info == 'add'? '新增' : '修改'}]]</title>
+</head>
+<body>
+<h1>[[${info == 'add'? '新增' : '修改'}]]员工</h1>
+<form th:action="${info=='add' ? '/empsave' : '/empupdate'}" method="post">
+    <p>
+        <input type="text" name="empno" th:value="${emp.empno}">
+    </p>
+    <p>
+        <input type="text" name="ename" th:value="${emp.ename}">
+    </p>
+    <p>
+        <input type="date" name="hiredate" th:value="${emp.hiredate}">
+    </p>
+    <p>
+        <input type="text" name="sal" th:value="${emp.sal}">
+    </p>
+    <p>
+<!--        <input type="text" name="deptno" th:value="${emp.deptno}">-->
+        <select name="deptno"  >
+            <option value="0">请选择</option>
+            <option th:each="dept:${depts}" th:value="${dept.deptno}" th:selected="${dept.deptno == emp.deptno}">
+                [[${dept.dname}]]</option>
+        </select>
+    </p>
+    <button>员工[[${info == 'add'? '新增' : '修改'}]]</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+    <style>
+      .info1{
+        margin-right: 200px;
+      }
+      .info2{
+        margin-right: 10px;
+      }
+    </style>
+</head>
+<body>
+  <a href="/savepage">添加员工</a>
+  <table width="800" border="1">
+    <tr>
+      <th>编号</th>
+      <th>姓名</th>
+      <th>入职时间</th>
+      <th>工资</th>
+      <th>奖金</th>
+      <th>部门名称</th>
+      <th>操作</th>
+    </tr>
+    <tr th:each="emp:${info.records}">
+      <td>[[${emp.empno}]]</td>
+      <td>[[${emp.ename}]]</td>
+      <td>[[${emp.hiredate}]]</td>
+      <td>[[${emp.sal}]]</td>
+      <td>[[${emp.comm == null ? '无': emp.comm}]]</td>
+      <td>[[${emp.dept != null ? emp.dept.dname : '' }]]</td>
+      <td>
+        <a th:href="|/updatepage/${emp.empno}|">修改</a>
+        <a th:href="'/empdel?empno='+${emp.empno}">删除</a>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <span class="info1">
+       共[[${info.total}]]条记录， 共[[${info.pages}]]页， 当前第[[${info.current}]]页
+    </span>
+    <span class="info2" th:if="${info.current > 1}">
+      <a th:href="|/empallPage?pno=${info.current-1}|">上一页</a>
+    </span>
+    <span class="info2" th:each="index:${#numbers.sequence(1, info.pages)}">
+      <a th:href="|/empallPage?pno=${index}|">
+          [[${index}]]
+      </a>
+    </span>
+    <span class="info2" th:if="${info.current < info.pages}">
+      <a th:href="|/empallPage?pno=${info.current+1}|">下一页</a>
+    </span>
+  </div>
+
+</body>
+</html>
