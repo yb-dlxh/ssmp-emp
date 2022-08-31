@@ -9,5 +9,5 @@ public class MyHotConfig {
     public void test843016(){}
     public void ttt(){}
   public void githubAdd(){}
-
+public void ssh(){}
 }
